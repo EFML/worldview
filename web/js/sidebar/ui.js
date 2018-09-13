@@ -36,10 +36,8 @@ export function sidebarUi(models, config, ui) {
       trailing: true
     });
     var layerAdd = function(layer) {
-      if (!ui.tour.resetting) {
-        updateLayers();
-        updateState('zotsObject', getZotsForActiveLayers(config, models, ui));
-      }
+      updateLayers();
+      updateState('zotsObject', getZotsForActiveLayers(config, models, ui));
     };
 
     // Set Event Listeners
@@ -58,12 +56,6 @@ export function sidebarUi(models, config, ui) {
       .on('add', layerAdd)
       .on('remove', updateLayers)
       .on('update', updateLayers);
-
-    ui.tour.events.on('reset', () => {
-      updateLayers();
-      updateData();
-      updateState('isCompareMode');
-    });
     models.palettes.events
       .on('set-custom', updateLayers)
       .on('clear-custom', updateLayers)
@@ -80,11 +72,9 @@ export function sidebarUi(models, config, ui) {
     if (models.compare) {
       models.compare.events
         .on('toggle', () => {
-          if (!ui.tour.resetting) {
-            updateState('isCompareMode');
-            updateState('layerObjects');
-            updateState('layers');
-          }
+          updateState('isCompareMode');
+          updateState('layerObjects');
+          updateState('layers');
         })
         .on('toggle-state', () => {
           updateState('isCompareA');
@@ -192,26 +182,22 @@ export function sidebarUi(models, config, ui) {
     });
   };
   var updateData = function() {
-    if (!ui.tour.resetting) {
-      self.reactComponent.setState({
-        dataDownloadObject: models.data.groupByProducts(),
-        onGetData: ui.data.showDownloadList,
-        showDataUnavailableReason: ui.data.showUnavailableReason
-      });
-    }
+    self.reactComponent.setState({
+      dataDownloadObject: models.data.groupByProducts(),
+      onGetData: ui.data.showDownloadList,
+      showDataUnavailableReason: ui.data.showUnavailableReason
+    });
   };
   /**
    * Update layer when something happens (Event listeners)
    */
   var updateLayers = function() {
-    if (!ui.tour.resetting) {
-      if (models.compare && models.compare.active) {
-        updateState('layerObjects');
-        updateState('zotsObject', getZotsForActiveLayers(config, models, ui));
-      } else {
-        updateState('layers');
-        updateState('zotsObject', getZotsForActiveLayers(config, models, ui));
-      }
+    if (models.compare && models.compare.active) {
+      updateState('layerObjects');
+      updateState('zotsObject', getZotsForActiveLayers(config, models, ui));
+    } else {
+      updateState('layers');
+      updateState('zotsObject', getZotsForActiveLayers(config, models, ui));
     }
   };
   var onProductSelect = function(product) {

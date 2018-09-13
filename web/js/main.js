@@ -93,7 +93,7 @@ import { compareModel } from './compare/model';
 import { debugConfig, debugLayers } from './debug';
 import Brand from './brand';
 // import tour from './tour/old-ui';
-import tour from './tour/ui';
+import { tourUi } from './tour/ui';
 import { uiInfo } from './ui/info';
 
 // Dependency CSS
@@ -299,7 +299,7 @@ window.onload = () => {
     elapsed('ui');
     // Create widgets
     ui.proj = projectionUi(models, config);
-    ui.tour = tour(models, ui, config);
+    ui.tour = tourUi(models, ui, config);
     ui.sidebar = sidebarUi(models, config, ui);
     ui.activeLayers = layersActive(models, ui, config);
     ui.addModal = layersModal(models, ui, config);
