@@ -92,6 +92,7 @@ import { compareModel } from './compare/model';
 // Other
 import { debugConfig, debugLayers } from './debug';
 import Brand from './brand';
+// import tour from './tour/old-ui';
 import tour from './tour/ui';
 import { uiInfo } from './ui/info';
 
