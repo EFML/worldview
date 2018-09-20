@@ -112,7 +112,6 @@ import '../../node_modules/jquery-jcrop/css/jquery.Jcrop.css';
 import '../../node_modules/ol/ol.css';
 import '../../node_modules/nouislider/src/jquery.nouislider.css';
 import '../../node_modules/simplebar/dist/simplebar.css';
-import '../../node_modules/intro.js/introjs.css';
 
 // App CSS
 import '../css/fonts.css';
