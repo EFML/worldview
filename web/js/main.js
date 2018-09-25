@@ -6,6 +6,9 @@ import googleAnalytics from './components/util/google-analytics';
 // Utils
 import util from './util/util';
 
+// Toolbar
+import { toolbarUi } from './toolbar/ui';
+
 // Date
 import { parse as dateParser } from './date/date';
 import { dateModel } from './date/model';
@@ -298,6 +301,7 @@ window.onload = () => {
 
     elapsed('ui');
     // Create widgets
+    ui.toolbar = toolbarUi(models, config, ui);
     ui.proj = projectionUi(models, config);
     ui.tour = tourUi(models, ui, config);
     ui.sidebar = sidebarUi(models, config, ui);

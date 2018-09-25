@@ -5,7 +5,7 @@ import lodashThrottle from 'lodash/throttle';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Clipboard from 'clipboard';
-import Share from '../components/share/share';
+import Share from '../components/toolbar/share/share';
 import googleAnalytics from '../components/util/google-analytics';
 
 import util from '../util/util';
